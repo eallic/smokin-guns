@@ -22,10 +22,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 // sdk_shared.h -- Smokin'Guns SDK tool
 
-// Tool to keep trace of your modification in the code, so you, coder, may comment
-// your own modifications for our information. Then Smokin'Guns teal will be able
-// to keep trace and eventually get your graceful accepted comments in consideration
-// Blame Tequila if you don't like this tool ;)
+// Tool to keep trace of your modification in the code, so you, coder, may
+// comment your own modifications for our information. Then Smokin'Guns teal
+// will be able to keep trace and eventually get your graceful accepted comments
+// in consideration Blame Tequila if you don't like this tool ;)
 
 #ifndef _SDK_SHARED_H_
 #define _SDK_SHARED_H_
@@ -37,6 +37,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define SDK_CONTACT "http://forum.smokin-guns.org/viewforum.php?f=22"
 
 extern const char **sdk_shared_textarray;
-extern const int  *sdk_shared_size;
+extern const int *sdk_shared_size;
 
 #endif // _SDK_SHARED_H_
