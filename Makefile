@@ -40,7 +40,7 @@ ifndef BUILD_MISSIONPACK
   BUILD_MISSIONPACK=
 endif
 ifndef BUILD_RENDERER_OPENGL2
-  BUILD_RENDERER_OPENGL2=
+  BUILD_RENDERER_OPENGL2=0
 endif
 
 #############################################################################
@@ -133,7 +133,7 @@ COPYBINDIR=$(COPYDIR)
 endif
 
 ifndef MOUNT_DIR
-MOUNT_DIR=code
+MOUNT_DIR=src
 endif
 
 ifndef BUILD_DIR
@@ -189,31 +189,31 @@ USE_FREETYPE=0
 endif
 
 ifndef USE_INTERNAL_SPEEX
-USE_INTERNAL_SPEEX=1
+USE_INTERNAL_SPEEX=0
 endif
 
 ifndef USE_INTERNAL_OGG
-USE_INTERNAL_OGG=1
+USE_INTERNAL_OGG=0
 endif
 
 ifndef USE_INTERNAL_VORBIS
-USE_INTERNAL_VORBIS=1
+USE_INTERNAL_VORBIS=0
 endif
 
 ifndef USE_INTERNAL_OPUS
-USE_INTERNAL_OPUS=1
+USE_INTERNAL_OPUS=0
 endif
 
 ifndef USE_INTERNAL_ZLIB
-USE_INTERNAL_ZLIB=1
+USE_INTERNAL_ZLIB=0
 endif
 
 ifndef USE_INTERNAL_JPEG
-USE_INTERNAL_JPEG=1
+USE_INTERNAL_JPEG=0
 endif
 
 ifndef USE_LOCAL_HEADERS
-USE_LOCAL_HEADERS=1
+USE_LOCAL_HEADERS=0
 endif
 
 ifndef USE_RENDERER_DLOPEN
@@ -1012,6 +1012,7 @@ ifeq ($(USE_CODEC_OPUS),1)
     CLIENT_CFLAGS += -I$(OPUSFILEDIR)/include
   else
     CLIENT_LIBS += -lopusfile -lopus
+    CLIENT_CFLAGS += -I/usr/include/opus
   endif
   NEED_OGG=1
 endif
@@ -2528,7 +2529,7 @@ Q3UIOBJ_ = \
 Q3UIOBJ = $(Q3UIOBJ_) $(B)/$(MISSIONPACK)/ui/ui_syscalls.o
 else
 Q3UIOBJ_ = $(SDK_Q3UIOBJ)
-Q3UIOBJ = $(Q3UIOBJ_) $(B)/$(BASENAME)/ui/ui_syscalls.o
+Q3UIOBJ = $(Q3UIOBJ_) $(B)/$(BASEGAME)/ui/ui_syscalls.o
 endif
 Q3UIVMOBJ = $(Q3UIOBJ_:%.o=%.asm)
 
@@ -2700,12 +2701,6 @@ ifeq ($(USE_GIT),1)
 ifneq ($(SDK_OBJ_WITH_VERSION_SUPPORT),)
   $(SDK_OBJ_WITH_VERSION_SUPPORT): .git/index
 endif
-endif
-
-# Extra dependencies to ensure sdk diff if included
-ifneq ($(SDK_DIFF),0)
-  $(B)/client/cl_main.o : build/sdk_diff.h
-  $(B)/client/sys_main.o : build/sdk_diff.h
 endif
 
 #############################################################################

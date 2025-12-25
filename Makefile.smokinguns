@@ -15,11 +15,9 @@ ifeq ($(BUILD_SERVER),)
   BUILD_SERVER     = 1
 endif
 ifeq ($(BUILD_GAME_SO),)
-  # Don't build binary game by default
-  BUILD_GAME_SO    = 0
+  BUILD_GAME_SO    = 1
 endif
 ifeq ($(BUILD_GAME_QVM),)
-  # Build QVM game by default
   BUILD_GAME_QVM   = 1
 endif
 ifeq ($(FRAMEBUFFER_AND_GLSL_SUPPORT),)
@@ -27,7 +25,7 @@ ifeq ($(FRAMEBUFFER_AND_GLSL_SUPPORT),)
   FRAMEBUFFER_AND_GLSL_SUPPORT = 1
 endif
 ifeq ($(BUILD_SDK_DIFF),)
-  BUILD_SDK_DIFF   = 1
+  BUILD_SDK_DIFF   = 0
 endif
 ifeq ($(USE_CODEC_VORBIS),)
   USE_CODEC_VORBIS = 1
